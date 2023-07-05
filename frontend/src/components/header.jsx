@@ -1,5 +1,5 @@
 import logo from '../resources/icon-left-font-monochrome-black.png';
-
+import '../App.css'
 
 function Header() {
     return (
