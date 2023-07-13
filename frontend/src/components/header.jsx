@@ -1,14 +1,17 @@
-import logo from '../resources/icon-left-font-monochrome-black.png';
-import '../App.css'
+import logo from '../resources/icon-black.png';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
         <>
-            <header classname="header">
-                <img src={logo} classname="header-logo" alt="header-logo"></img>
-                <nav classname="nav-links">
-                    <div classname="login-nav">Login</div>
-                    <div classname="signup-nav">Sign Up</div>
+            <header className="header">
+                <div className="header-logo">
+                    <img src={logo} className="black-logo" alt="header-logo"></img>
+                    <div className="header-title">Groupomania</div>
+                </div>
+                <nav className="nav-links">
+                    <Link to="/" className="login-nav" >Login</Link>
+                    <Link to="/sign-up" className="signup-nav" >Sign Up</Link>
                 </nav>
             </header>
         </>

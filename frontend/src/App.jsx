@@ -1,17 +1,33 @@
-
 import './App.css';
 import Login from './pages/login'
-import Header from './components/header.jsx'
+import SignUp from './pages/sign-up'
+import Header from './components/header'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createRoot } from 'react-dom/client'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
   return (
     <div className="App">
 
-      <Header />
-      <Login />
+      <React.StrictMode>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+          </Routes>
+        </BrowserRouter>
+      </React.StrictMode>
+
 
     </div>
   );
 }
 
 export default App;
+
+

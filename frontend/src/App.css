@@ -1,14 +1,142 @@
+/* header style */
+
 .header {
   display: flex;
   flex-direction: row;
-  background-color: aqua;
+  justify-content: space-between;
+  height: 65px;
+  width: auto;
+  /* border-radius: 0px 0px 5px 5px; */
+  background-color: white;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+  z-index: 1000;
+  position: relative;
+}
+
+.background-image-contianer{
+  position: relative;
+  z-index: 10000;
+}
+
+.black-logo{
+  height: 50px;
 }
 
 .nav-links {
-  width: 100px;
+  width: 200px;
   display: flex;
+  position: relative;
+  justify-content: end;
+  right: 250px;
+  padding: 10px 10px 0px 0px;
+  margin-top: 8px;
 }
 
 .login-nav{
-  color: aqua;
+  font-size: 1.2rem;
+  padding: 0px 10px;
+
+}
+
+.signup-nav{
+  font-size: 1.2rem;
+  padding-left: 20px;
+}
+
+.header-logo{
+  height: auto;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin-left: 850px;
+  margin-top: 5px;
+}
+
+.header-title{
+  height: 50px;
+  font-size: 2.06rem;
+}
+
+
+/* login style */
+
+.page-container{
+  max-width: 1440px;
+  margin: auto;
+  background-color: white;
+  background-color: #fedfdf;
+  height: 1000px;
+}
+
+
+
+.input-container{ 
+  width: 400px;
+  position: relative;
+  justify-items: center;
+  top: 300px;
+  left: 550px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.input-title{
+  width: 200px;
+  position: relative;
+  left: 150px;
+  bottom: 10px
+}
+
+.email-title{
+  margin-right: 50px;
+  font-size: 17px;
+}
+
+#email{
+  width: 250px;
+  font-size: 17px;
+}
+
+.email-input{
+  width: 500px;
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.password-title{
+  margin-right: 20px;
+  font-size: 17px;
+}
+
+#password{
+  font-size: 17px;
+  width: 250px;
+}
+
+.password-input{
+  width: 500px;
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.submit-button{
+  position: relative;
+  left: 322px;
+  bottom: 20px;
+}
+
+.input-statement{
+  position: relative;
+  bottom: 15px;
+  left: 20px;
+  font-size: 10px;
 }
