@@ -1,0 +1,135 @@
+/* login & signup style */
+
+.page-container {
+  max-width: 375px;
+  background-color: white;
+  background-color: #fedfdf;
+  height: 667px;
+}
+
+.background-image {
+  opacity: 0.2;
+  object-fit: cover;
+  height: 667px;
+  width: 375px;
+  position: absolute;
+}
+
+.input-container {
+  width: 350px;
+  position: absolute;
+  justify-items: center;
+  top: 250px;
+  left: 10px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+  &--title {
+    width: 200px;
+    position: relative;
+    left: 125px;
+    bottom: 10px
+  }
+
+  &--statement {
+    position: relative;
+    bottom: 15px;
+    left: 20px;
+    font-size: 10px;
+  }
+}
+
+#email {
+  width: 210px;
+  font-size: 17px;
+}
+
+.email-input {
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  &--title {
+    margin-right: 50px;
+    font-size: 17px;
+  }
+}
+
+#password {
+  font-size: 17px;
+  width: 210px;
+}
+
+.password-input {
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  &--title {
+    margin-right: 20px;
+    font-size: 17px;
+  }
+}
+
+.submit-button-login {
+  position: relative;
+  left: 282px;
+  bottom: 20px;
+}
+
+.submit-button-signup {
+  position: relative;
+  left: 269px;
+  bottom: 20px;
+}
+
+
+//Media query for desktop
+
+@media only screen and (min-width: 998px) {
+.page-container{
+  max-width: 1440px;
+  margin: auto;
+  height: 1000px;
+}
+
+.background-image{
+  height: 1000px;
+  width: 1440px;
+}
+
+.input-container{ 
+  width: 400px;
+  left: 770px;
+  
+  &--title{
+    left: 150px;
+    bottom: 10px
+  }
+
+}
+
+#email{
+  width: 250px;
+}
+
+#password{
+  font-size: 17px;
+  width: 250px;
+}
+
+.submit-button-login{
+  left: 322px;
+}
+
+.submit-button-signup{
+  left: 309px;
+}
+}

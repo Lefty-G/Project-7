@@ -44,9 +44,6 @@ exports.login = (req, res, next) => {
             { userId: user.id },
             'RANDOM_TOKEN_SECRET',
             { expiresIn: '24h' });
-            const login = async (e) =>{
-              
-            }
             res.status(200).json({
             email: user.email,
             userId: user.id,

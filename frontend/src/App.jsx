@@ -1,4 +1,5 @@
-import './App.css';
+import './components/styles/index.scss';
+import './components/styles/header.scss'
 import Login from './pages/login'
 import SignUp from './pages/sign-up'
 import Header from './components/header'

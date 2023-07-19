@@ -1,0 +1,91 @@
+/* header style */
+a {
+
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 65px;
+  width: auto;
+  background-color: white;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, .2);
+  position: relative;
+
+  &--logo {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin-left: 10px;
+    margin-top: 5px;
+
+  }
+
+  &--black-logo {
+    height: 50px;
+  }
+
+  &--title {
+    display: none;
+  }
+}
+
+.nav-links {
+  width: 200px;
+  display: flex;
+  justify-content: end;
+  right: 250px;
+  padding: 10px 10px 0px 0px;
+  margin-top: 10px;
+
+  &--login {
+    font-size: 1.1rem;
+    padding: 0px 5px;
+    text-decoration: none;
+    color: black;
+  }
+
+  &--signup {
+    font-size: 1.1rem;
+    padding-left: 10px;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+
+//Media query for desktop
+
+@media only screen and (min-width: 998px) {
+  .header {
+
+    &--logo {
+      margin-left: 850px;
+    }
+
+    &--title {
+      height: 50px;
+      font-size: 2.06rem;
+      display: block;
+    }
+  }
+
+  .nav-links {
+
+    margin-top: 8px;
+
+    &--login {
+      font-size: 1.2rem;
+      padding: 0px 10px;
+    }
+
+    &--signup {
+      font-size: 1.2rem;
+      padding-left: 20px;
+    }
+  }
+}
+
+
