@@ -7,7 +7,7 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
-//addded from Scott’s mini demo
+
 const database = process.env.DB_NAME;
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
@@ -22,7 +22,7 @@ if (config.use_env_variable) {
     config
   );
 }
-//added from Scott’s mini demo
+
 if ('development' === env) {
   sequelize.sync({ alter: true });
   console.log('All tables are up to date');

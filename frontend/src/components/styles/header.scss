@@ -1,7 +1,4 @@
 /* header style */
-a {
-
-}
 
 .header {
   display: flex;
@@ -45,11 +42,13 @@ a {
     padding: 0px 5px;
     text-decoration: none;
     color: black;
+    border-right: 1px solid grey;
+    height: 30px;
   }
 
   &--signup {
     font-size: 1.1rem;
-    padding-left: 10px;
+    padding-left: 5px;
     text-decoration: none;
     color: black;
   }
@@ -62,7 +61,7 @@ a {
   .header {
 
     &--logo {
-      margin-left: 850px;
+      margin-left: 775px;
     }
 
     &--title {

@@ -97,17 +97,19 @@
 .page-container{
   max-width: 1440px;
   margin: auto;
-  height: 1000px;
+  height: 800px;
 }
 
 .background-image{
-  height: 1000px;
+  height: 800px;
   width: 1440px;
 }
 
 .input-container{ 
+  position: relative;
   width: 400px;
-  left: 770px;
+  left: 550px;
+  bottom: 100px;
   
   &--title{
     left: 150px;

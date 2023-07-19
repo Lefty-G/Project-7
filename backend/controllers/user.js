@@ -67,27 +67,27 @@ exports.login = (req, res, next) => {
   );
 };
 
-// exports.deleteSauce = (req, res, next) => {
-//   Sauce.findOne({ _id: req.params.id }).then(
-//     (sauce) => {
-//       const filename = sauce.imageUrl.split('/images/')[1];
-//       fs.unlink('images/' + filename, () => {
-//         Sauce.deleteOne({ _id: req.params.id }).then(
-//           () => {
-//             res.status(200).json({
-//               message: 'Deleted!'
-//             });
-//           }
-//         ).catch(
-//           (error) => {
-//             res.status(400).json({
-//               error: error
-//             });
-//           }
-//         );
-//       });
-//     }
-//   );
-// };
+exports.deleteSauce = (req, res, next) => {
+  User.findOne({ _id: req.params.id }).then(
+    (user) => {
+      const filename = sauce.imageUrl.split('/images/')[1];
+      fs.unlink('images/' + filename, () => {
+        User.deleteOne({ _id: req.params.id }).then(
+          () => {
+            res.status(200).json({
+              message: 'User Deleted!'
+            });
+          }
+        ).catch(
+          (error) => {
+            res.status(400).json({
+              error: error
+            });
+          }
+        );
+      });
+    }
+  );
+};
 
 //Use different API method for sequelize
