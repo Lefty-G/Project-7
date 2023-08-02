@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { useState } from 'react';
-import backgroundImage from '../resources/index-background.jpg';
+
 
 
 function SignUp() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleClick = async (e) => {
@@ -16,16 +17,16 @@ function SignUp() {
                 email,
                 password
             })
+            navigate("/");
             console.log(res.data)
         } catch (err) {
             console.log(err)
         }
     }
 
-    
+
     return (
-        <div className="page-container">
-            <img src={backgroundImage} className="background-image" alt="background-image"></img>
+        <div className="index-page-container">
             <div className="input-container">
                 <h1 className="input-container--title">Sign Up</h1>
                 <div className="email-input">

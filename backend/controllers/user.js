@@ -30,21 +30,21 @@ exports.login = (req, res, next) => {
     (user) => {
       if (!user) {
         return res.status(401).json({
-          error: new Error('User not found!')
+          error: 'User not found!'
         });
       }
       bcrypt.compare(req.body.password, user.password).then(
         (valid) => {
           if (!valid) {
             return res.status(401).json({
-              error: new Error('Incorrect password!')
+              error: 'Incorrect password!'
             });
           }
           const token = jwt.sign(
             { userId: user.id },
             'RANDOM_TOKEN_SECRET',
             { expiresIn: '24h' });
-            res.status(200).json({
+          res.status(200).json({
             email: user.email,
             userId: user.id,
             token
@@ -61,31 +61,28 @@ exports.login = (req, res, next) => {
   ).catch(
     (error) => {
       res.status(500).json({
-        error: error
+        error: error.message || error
       });
     }
   );
 };
 
-exports.deleteSauce = (req, res, next) => {
-  User.findOne({ _id: req.params.id }).then(
+exports.deleteUser = (req, res, next) => {
+  User.findOne({ id: req.params.id }).then(
     (user) => {
-      const filename = sauce.imageUrl.split('/images/')[1];
-      fs.unlink('images/' + filename, () => {
-        User.deleteOne({ _id: req.params.id }).then(
-          () => {
-            res.status(200).json({
-              message: 'User Deleted!'
-            });
-          }
-        ).catch(
-          (error) => {
-            res.status(400).json({
-              error: error
-            });
-          }
-        );
-      });
+      User.destroy({where:{ id: req.params.id }}).then(
+        () => {
+          res.status(200).json({
+            message: 'User Deleted!'
+          });
+        }
+      ).catch(
+        (error) => {
+          res.status(400).json({
+            error: error
+          });
+        }
+      );
     }
   );
 };

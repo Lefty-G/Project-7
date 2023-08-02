@@ -1,30 +1,46 @@
-import backgroundImage from '../resources/index-background.jpg';
+
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { store } from '../store.js';
+
+
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { state, dispatch } = useContext(store);
+    const [ user, setUser] = useState();
     const handleClick = async (e) => {
         e.preventDefault();
         console.log('The link was clicked.');
-
+        const userDetails = { email, password }
         try {
-            const res = await axios.post("http://localhost:3000/api/auth/login", {
-                email,
-                password
-            })
-            console.log(res.data)
+            const res = await axios.post("http://localhost:3000/api/auth/login",
+                userDetails
+            );
+        setUser(res.data)
+        localStorage.setItem('userDetails', res.data)
+        console.log(res.data)
+
+            dispatch({ type: "CHANGE_COLOR", payload: "blue" });
+            console.log(state.color)
         } catch (err) {
             console.log(err)
         }
-    }
+    };
+
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("userDetails");
+        if (loggedInUser) {
+          const foundUser = JSON.parse(loggedInUser);
+          setUser(foundUser);
+        }
+      }, []);
+
 
     return (
-        <div className="page-container">
-            
-                <img src={backgroundImage} className="background-image" alt="background-image"></img>
+            <div className="index-page-container">
                 <div className="input-container">
                     <h1 className="input-container--title">Login</h1>
                     <div className="email-input">
@@ -44,8 +60,8 @@ function Login() {
                         </Link>
                         &nbsp;here</div>
                 </div>
-            
-        </div>
+
+            </div>
     )
 }
 
