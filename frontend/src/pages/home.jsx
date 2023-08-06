@@ -40,7 +40,7 @@ function Home() {
                 </div>
             </div>
             <div className="create-post">
-               <Link to="/create-a-post" className="create-post--button">
+               <Link to="/create-post" className="create-post--button">
                     Create a post 
                 </Link>
             </div>

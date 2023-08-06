@@ -27,9 +27,9 @@ function Header() {
                 <div className="header--title">Groupomania</div>
             </div>
                 {userLoggedIn 
-                ? <nav className="menu">
+                ? <Link to="/menu" className="menu">
                     <FontAwesomeIcon icon={faBars} />
-                </nav>
+                </Link>
                 : <nav className="nav-links">
                     <Link to="/" className="nav-links--login" >Login</Link>
                     <Link to="/sign-up" className="nav-links--signup" >Sign Up</Link>

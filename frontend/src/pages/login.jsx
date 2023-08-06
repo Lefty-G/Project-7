@@ -9,7 +9,6 @@ import Header from '../components/header'
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [currentUser, setCurrentUser] = useState(null);
     const navigate = useNavigate();
     const { state, dispatch } = useContext(store);
     const [user, setUser] = useState();
@@ -31,13 +30,6 @@ function Login() {
         }
     };
     
-    // const getCurrentUser = async function () {
-    //     const currentUser = await Parse.User.current();
-    //     // Update state variable holding current user
-    //     setCurrentUser(currentUser);
-    //     return currentUser;
-    //   };
-
 
     return (
         <>
