@@ -1,0 +1,71 @@
+@mixin box-shadow{
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, .2);
+}
+
+@mixin button-color{
+    color: rgb(255, 78, 78);
+}
+
+Link{
+    text-decoration: none;
+}
+
+.home-page-container{
+    height: 1000px;
+}
+
+.home-logos{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0px;
+    font-size: 30px;
+    @include box-shadow;
+
+
+    &--home{
+        width: 75px;
+        text-align: center;
+         @include button-color;
+    }
+
+    &--friends{
+        width: 75px;
+        text-align: center;
+        @include button-color;
+    }
+
+    &--messages{
+        width: 75px;
+        text-align: center;
+        @include button-color;
+    }
+
+    &--notifications{
+        width: 75px;
+        text-align: center;
+        @include button-color;
+    }
+}
+
+.create-post{
+    height: 70px;
+    text-align: center;
+    
+
+    &--button{
+        left: 15px;
+        top: 12px;
+        border-radius: 40px;
+        position: relative;
+        font-size: 1.2rem;
+        padding: 10px 0px;
+        width: 350px;
+        background-color: rgb(255, 78, 78);
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.post-area{
+    height: auto;
+}
