@@ -40,9 +40,9 @@ function Home() {
                 </div>
             </div>
             <div className="create-post">
-               <Link to="/create-a-post"> <div className="create-post--button">
+               <Link to="/create-a-post" className="create-post--button">
                     Create a post 
-                </div></Link>
+                </Link>
             </div>
             <div className="post-area">
                 

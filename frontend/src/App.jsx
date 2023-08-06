@@ -1,14 +1,10 @@
-import './components/styles/index.scss';
-import './components/styles/header.scss'
+import './components/styles/main.scss'
 import Login from './pages/login'
 import SignUp from './pages/sign-up'
-import Header from './components/header'
+import Home from './pages/home'
+import CreateAPost from './pages/create-a-post'
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { createRoot } from 'react-dom/client'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { StateProvider } from './store';
 
 
@@ -16,17 +12,18 @@ function App() {
   return (
     <div className="App">
 
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <StateProvider>
-          <BrowserRouter>
-            <Header />
+          <BrowserRouter>           
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/create-a-post" elemnt={<CreateAPost />} />
             </Routes>
           </BrowserRouter>
         </StateProvider>
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
 
 
     </div>

@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             imageUrl: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             usersRead:{
                 type: DataTypes.ARRAY(DataTypes.INTEGER),
