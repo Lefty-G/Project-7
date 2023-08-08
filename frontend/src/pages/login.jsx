@@ -64,9 +64,3 @@ export default Login
 
 
 
-// const handleLogout = () => {
-//     setUser({});
-//     setUsername("");
-//     setPassword("");
-//     localStorage.clear();
-//   };

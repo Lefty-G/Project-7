@@ -1,0 +1,84 @@
+.post-container{
+    width: 350px;
+    height: 575px;
+    position: relative;
+    top: 10px;
+    left: 12px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .2);
+}
+
+
+.user-card{
+    display: flex;
+    height: 50px;
+    width: 350px;
+
+    &--picture{
+        width: 50px;
+        position: relative;
+        left: 7px;
+        top: 2px;
+    }
+
+    &--username{
+        position: relative;
+        top: 12px;
+        left: 17px;
+        font-size: 20px;
+    }
+
+}
+
+.post-input{
+    width: 325px;
+    height: 250px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    border: solid rgb(245, 247, 247);
+    background-color: rgb(245, 247, 247);
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.post-input-additions{
+    height: 150px;
+    position: relative;
+    top: 20px;
+
+    &--container{
+        display: flex;
+        padding: 10px 0 0 0;
+        margin-left: 20px;
+
+        &__logo{
+            font-size: 20px;
+            color: $primary-color;
+        }
+
+        &__text{
+            margin-left: 10px;
+        }
+    }
+}
+
+.create-post{
+    height: 70px;
+    text-align: center;
+    text-decoration: none;
+    
+
+    &--button{
+        top: 50px;
+        left: 25px;
+        width: 300px;
+        border-radius: 40px;
+        position: relative;
+        font-size: 1.2rem;
+        padding: 10px 0px;
+        background-color: $primary-color;
+        color: white;
+        text-decoration: none;
+    }
+}
+

@@ -6,7 +6,7 @@ const MIME_TYPES = {
     'image/png': 'png',
 };
 
-const storage = multer.diskStorage({
+const imageStorage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, 'images');
     },
@@ -17,4 +17,16 @@ const storage = multer.diskStorage({
     }
 });
 
-module.exports = multer({ storage: storage }).single('image', 'video');
+// const videoStorage = multer.diskStorage({
+//     destination: (req, file, callback) => {
+//         callback(null, 'videos');
+//     },
+//     filename: (req, file, callback) => {
+//         const name = file.originalname.split(' ').join('_');
+//         const extension = MIME_TYPES[file.mimetype];
+//         callback(null, name + Date.now() + '.' + extension)
+//     }
+// });
+
+
+module.exports = multer({ storage: imageStorage }).single('image');

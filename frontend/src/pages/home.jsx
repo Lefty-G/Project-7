@@ -39,8 +39,8 @@ function Home() {
                 <FontAwesomeIcon icon={faBell} />
                 </div>
             </div>
-            <div className="create-post">
-               <Link to="/create-post" className="create-post--button">
+            <div className="create-a-post">
+               <Link to="/create-post" className="create-a-post--button">
                     Create a post 
                 </Link>
             </div>

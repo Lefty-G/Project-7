@@ -43,7 +43,7 @@ exports.login = (req, res, next) => {
           const token = jwt.sign(
             { userId: user.id },
             'RANDOM_TOKEN_SECRET',
-            { expiresIn: '24h' });
+            { expiresIn: '4h' });
           res.status(200).json({
             email: user.email,
             userId: user.id,
