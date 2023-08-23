@@ -45,7 +45,7 @@ function Home() {
                 </Link>
             </div>
             <div className="post-area">
-                
+                <Post />
             </div>
             </div>
         </>

@@ -23,7 +23,6 @@ function Login() {
             setUser(res.data)
             console.log('Unique text')
             dispatch({ type: "CHANGE_USER", payload: res.data });
-            console.log({payload: res.data});
             navigate("/home");
         } catch (err) {
             console.log(err)

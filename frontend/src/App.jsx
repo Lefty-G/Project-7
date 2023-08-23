@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
 
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <StateProvider>
           <BrowserRouter>           
             <Routes>
@@ -25,7 +25,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </StateProvider>
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
 
 
     </div>

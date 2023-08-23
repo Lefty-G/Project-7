@@ -4,6 +4,9 @@ const MIME_TYPES = {
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
     'image/png': 'png',
+    'video/mp4': 'mp4',
+    'video/mov': 'mov',
+    'audio/mpeg': 'mp3',
 };
 
 const imageStorage = multer.diskStorage({
@@ -29,4 +32,4 @@ const imageStorage = multer.diskStorage({
 // });
 
 
-module.exports = multer({ storage: imageStorage }).single('image');
+module.exports = multer({ storage: imageStorage }).single('media');

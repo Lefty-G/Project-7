@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faImage, faUserGroup, faGear, faMessage, faPeopleGroup, faCartShopping, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import profilePicture from "../resources/grey-profile-picture.png"
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { store } from '../store.js';
 
 function Menu() {
     const [email, setEmail] = useState('');
@@ -17,6 +18,10 @@ function Menu() {
     };
 
 
+    const userDetails = useContext(store).state.userDetails
+
+    console.log(userDetails);
+
     return (
         <>
             <nav className="misc-nav">
@@ -28,7 +33,7 @@ function Menu() {
             <div className='menu-container'>
                 <div className='user-details'>
                     <img src={profilePicture} alt="profile-picture" className="user-details--picture" />
-                    <div id="username" className="user-details--username">Username</div>
+                    <div id="username" className="user-details--username">{userDetails.email}</div>
                     <div className="user-details--text">View your profile</div>
                 </div>
                 <div className='menu-cards'>

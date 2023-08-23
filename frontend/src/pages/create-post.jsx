@@ -1,13 +1,41 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faImage, faVideo, faMicrophone, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faImage, faVideo, faMicrophone, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import profilePicture from "../resources/grey-profile-picture.png"
+import profilePicture from "../resources/grey-profile-picture.png";
+import Post from '../components/post';
+import { useState, useContext } from 'react';
+import { store } from '../store.js';
+import Ably from "ably";
+
 
 function CreatePost() {
 
-    const getUserDetails = JSON.parse(localStorage.getItem('userDetails'));
+    const userDetails = useContext(store).state.userDetails
 
-    console.log(getUserDetails);
+    const addComment = async (e) => {
+        // Prevent the default behaviour of form submit
+        e.preventDefault()
+        // Get the value of the comment box
+        // and make sure it not some empty strings
+        const comment = e.target.elements.comment.value.trim()
+        const name = e.target.elements.name.value.trim()
+        // Get the current time.
+        const timestamp = Date.now()
+        // Make sure name and comment boxes are filled
+        if (name && comment) {
+          const commentObject = { name, comment, timestamp }
+          // Publish comment
+          const channel = Ably.channels.get("comments")
+          channel.publish("add_comment", commentObject, (err) => {
+            if (err) {
+              console.log("Unable to publish message err = " + err.message)
+            }
+          })
+          // Clear input fields
+          e.target.elements.name.value = ""
+          e.target.elements.comment.value = ""
+        }
+      }
 
     return (
         <>
@@ -20,10 +48,10 @@ function CreatePost() {
             <div className="post-container">
                 <div className="user-card">
                     <img src={profilePicture} alt="profile-picture" className="user-card--picture" />
-                    <div id="username" className="user-card--username">Username</div>
+                    <div id="username" className="user-card--username">{userDetails.email}</div>
                 </div>
-                <form>
-                    <textarea placeholder="Got something to say?" className="post-input"></textarea>
+                <form onSubmit={addComment}>
+                    <textarea placeholder="Got something to say?" className="post-input" name="comment"></textarea>
                     <div className="post-input-additions">
                         <div className="post-input-additions--container">
                             <FontAwesomeIcon className="post-input-additions--container__logo" icon={faImage} />
@@ -43,9 +71,9 @@ function CreatePost() {
                         </div>
                     </div>
                     <Link to="/home" className="create-post">
-                        <div className="create-post--button">
+                        <button className="create-post--button">
                             Create post
-                        </div>
+                        </button>
                     </Link>
                 </form>
             </div>
