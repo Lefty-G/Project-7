@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 
 
-const initialState = JSON.parse(localStorage.getItem("userDetails")) || {};
+const initialState = JSON.parse(localStorage.getItem("userDetails")) || {userDetails:null};
 
 const store = createContext(initialState);
 const { Provider } = store;

@@ -1,41 +1,44 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faImage, faVideo, faMicrophone, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import profilePicture from "../resources/grey-profile-picture.png";
 import Post from '../components/post';
 import { useState, useContext } from 'react';
 import { store } from '../store.js';
-import Ably from "ably";
+import axios from 'axios'
+
 
 
 function CreatePost() {
 
-    const userDetails = useContext(store).state.userDetails
+    const userDetails = useContext(store).state.userDetails;
+    const [comment, setComment] = useState('');
+    const [email, setEmail] = useState('');
+    const [media, setMedia] = useState(null);
+    const navigate = useNavigate();
+
 
     const addComment = async (e) => {
-        // Prevent the default behaviour of form submit
         e.preventDefault()
-        // Get the value of the comment box
-        // and make sure it not some empty strings
-        const comment = e.target.elements.comment.value.trim()
-        const name = e.target.elements.name.value.trim()
-        // Get the current time.
+        console.log(comment);
         const timestamp = Date.now()
-        // Make sure name and comment boxes are filled
-        if (name && comment) {
-          const commentObject = { name, comment, timestamp }
-          // Publish comment
-          const channel = Ably.channels.get("comments")
-          channel.publish("add_comment", commentObject, (err) => {
-            if (err) {
-              console.log("Unable to publish message err = " + err.message)
-            }
-          })
-          // Clear input fields
-          e.target.elements.name.value = ""
-          e.target.elements.comment.value = ""
+
+        if(media) {
+            //TODO use form data with axios to submit request to backend
+        }else{
+            //TODO use JSON with axios to submit request to backend
         }
-      }
+
+        navigate("/home");
+    }
+
+    const handleMediaChange = (e) => {
+        setMedia(e.target.file[0])
+    }
+    
+    const handleCommentChange = (e) => {
+        setComment(e.target.value)
+    }
 
     return (
         <>
@@ -51,8 +54,15 @@ function CreatePost() {
                     <div id="username" className="user-card--username">{userDetails.email}</div>
                 </div>
                 <form onSubmit={addComment}>
-                    <textarea placeholder="Got something to say?" className="post-input" name="comment"></textarea>
+                    <textarea placeholder="Got something to say?" className="post-input" name="comment" onChange={handleCommentChange} value={comment}></textarea>
                     <div className="post-input-additions">
+                        <input
+                            aria-label="create post media input selector"
+                            className="create-post__upload"
+                            type="file"
+                            accept="image/*,video/*,audio/*"
+                            onChange={handleMediaChange}
+                        />
                         <div className="post-input-additions--container">
                             <FontAwesomeIcon className="post-input-additions--container__logo" icon={faImage} />
                             <div className="post-input-additions--container__text">Photos</div>
@@ -70,11 +80,9 @@ function CreatePost() {
                             <div className="post-input-additions--container__text">Tag friends</div>
                         </div>
                     </div>
-                    <Link to="/home" className="create-post">
-                        <button className="create-post--button">
-                            Create post
-                        </button>
-                    </Link>
+                    <button type='submit' className="create-post--button">
+                        Create post
+                    </button>
                 </form>
             </div>
         </>
