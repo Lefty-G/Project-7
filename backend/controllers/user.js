@@ -26,11 +26,12 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email }).then(
+  User.findOne({ where: {email: req.body.email} }).then(
     (user) => {
       if (!user) {
         return res.status(401).json({
           error: 'User not found!'
+          
         });
       }
       bcrypt.compare(req.body.password, user.password).then(

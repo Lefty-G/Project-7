@@ -7,9 +7,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
 
+// change email to userId
+
     Post.init(
         {
-            email: {
+            userId: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },

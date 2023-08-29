@@ -62,3 +62,51 @@ exports.createPost = (req, res, next) => {
       }
     );
   };
+
+  exports.usersRead = (req, res, next) => {
+    const userId = req.body.userId;
+    const postId = req.params.id;
+    const read = req.body.read;
+    Post.findOne({
+      _id: postId
+    }).then(
+      (post) => {
+            console.log('Post read');
+            post.usersRead.push(userId);
+            post.read++;
+      }
+    ).catch(
+      (error) => {
+        res.status(404).json({
+          error: error.message || error
+        });
+      }
+    );
+  };
+
+
+  // case 0:
+  //   console.log('Cancellin like/dislike')
+  //   resetLikeStatus(sauce, userId);
+  //   break;
+  // case -1:
+  //   console.log('sauce disliked')
+  //   resetLikeStatus(sauce, userId);
+  //   sauce.usersDisliked.push(userId);
+  //   sauce.dislikes++;
+  //   break;
+  // default:
+  //   throw 'Unrecognised like value'
+  // Post.updateOne({ _id: req.params.id }, post).then(
+  //   () => {
+  //     res.status(200).json({
+  //       message: 'Post read'
+  //     });
+  //   }
+  // ).catch(
+  //   (error) => {
+  //     res.status(400).json({
+  //       error: error.message || error
+  //     });
+  //   }
+  // );

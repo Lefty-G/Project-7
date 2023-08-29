@@ -20,7 +20,7 @@ function Menu() {
 
     const userDetails = useContext(store).state.userDetails
 
-    console.log(userDetails);
+    const params = userDetails.userId
 
     return (
         <>
@@ -34,7 +34,7 @@ function Menu() {
                 <div className='user-details'>
                     <img src={profilePicture} alt="profile-picture" className="user-details--picture" />
                     <div id="username" className="user-details--username">{userDetails.email}</div>
-                    <div className="user-details--text">View your profile</div>
+                    <Link to={`/profile/${params}`} className="user-details--text">View your profile</Link>
                 </div>
                 <div className='menu-cards'>
                     <div className='menu-cards--card'>

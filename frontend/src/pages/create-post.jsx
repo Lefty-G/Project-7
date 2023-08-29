@@ -12,32 +12,48 @@ import axios from 'axios'
 function CreatePost() {
 
     const userDetails = useContext(store).state.userDetails;
-    const [comment, setComment] = useState('');
-    const [email, setEmail] = useState('');
+    const [post, setPost] = useState('');
     const [media, setMedia] = useState(null);
     const navigate = useNavigate();
 
-
-    const addComment = async (e) => {
+    const handleInput = async (e) => {
         e.preventDefault()
-        console.log(comment);
-        const timestamp = Date.now()
+        console.log(post)
 
-        if(media) {
-            //TODO use form data with axios to submit request to backend
-        }else{
-            //TODO use JSON with axios to submit request to backend
+        const postDetails = { email:'', post, id: userDetails.userId }
+        let headers 
+        console.log(media)
+
+        if (media) {
+            const formData = new FormData();
+            formData.append('media', media);
+            console.log(postDetails)
+            formData.append('post', JSON.stringify(postDetails));
+            headers = {
+                'Authorization': `Bearer ${userDetails.token}`,
+                'Content-Type': 'multipart/form-data'
+            }
+            axios.post('http://localhost:3000/api/posts', formData, { headers })
+
+        } else {
+            headers = {
+                'Authorization': `Bearer ${userDetails.token}`,
+                'Content-Type': 'application/json'
+            }
+            axios.post('http://localhost:3000/api/posts', postDetails, { headers })
+            
+
         }
 
         navigate("/home");
     }
 
     const handleMediaChange = (e) => {
-        setMedia(e.target.file[0])
+        setMedia(e.target.files[0])
     }
-    
+
     const handleCommentChange = (e) => {
-        setComment(e.target.value)
+        setPost(e.target.value)
     }
 
     return (
@@ -53,9 +69,9 @@ function CreatePost() {
                     <img src={profilePicture} alt="profile-picture" className="user-card--picture" />
                     <div id="username" className="user-card--username">{userDetails.email}</div>
                 </div>
-                <form onSubmit={addComment}>
-                    <textarea placeholder="Got something to say?" className="post-input" name="comment" onChange={handleCommentChange} value={comment}></textarea>
-                    <div className="post-input-additions">
+                <form onSubmit={handleInput}>
+                    <textarea placeholder="Got something to say?" className="post-input" name="post" onChange={handleCommentChange} value={post}></textarea>
+                    <div className="post-input-upload">
                         <input
                             aria-label="create post media input selector"
                             className="create-post__upload"
@@ -63,22 +79,6 @@ function CreatePost() {
                             accept="image/*,video/*,audio/*"
                             onChange={handleMediaChange}
                         />
-                        <div className="post-input-additions--container">
-                            <FontAwesomeIcon className="post-input-additions--container__logo" icon={faImage} />
-                            <div className="post-input-additions--container__text">Photos</div>
-                        </div>
-                        <div className="post-input-additions--container">
-                            <FontAwesomeIcon className="post-input-additions--container__logo" icon={faVideo} />
-                            <div className="post-input-additions--container__text">Video</div>
-                        </div>
-                        <div className="post-input-additions--container">
-                            <FontAwesomeIcon className="post-input-additions--container__logo" icon={faMicrophone} />
-                            <div className="post-input-additions--container__text">Audio</div>
-                        </div>
-                        <div className="post-input-additions--container">
-                            <FontAwesomeIcon className="post-input-additions--container__logo" icon={faUser} />
-                            <div className="post-input-additions--container__text">Tag friends</div>
-                        </div>
                     </div>
                     <button type='submit' className="create-post--button">
                         Create post

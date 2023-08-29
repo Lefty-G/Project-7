@@ -4,6 +4,7 @@ import SignUp from './pages/sign-up'
 import Home from './pages/home'
 import CreatePost from './pages/create-post'
 import Menu from './pages/menu'
+import Profile from './pages/profile'
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { StateProvider } from './store';
@@ -13,7 +14,8 @@ import { useContext } from 'react';
 
 function App() {
   // const { state } = useContext(store).state.userDetails;
-  // const userDetails = useContext(store).state.userDetails;
+  // const userDetails = useContext(store).state.userDetails
+
 
   return (
     <div className="App">
@@ -28,6 +30,7 @@ function App() {
               <Route path ='/home' element={<Home />} />
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/menu" element={<Menu />} />
+              <Route path={`/profile/:id`} element={<Profile />} />
             </Routes>
           </BrowserRouter>
         </StateProvider>

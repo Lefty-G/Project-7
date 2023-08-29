@@ -13,7 +13,6 @@ function Header() {
     useEffect(() => {
         if (loggedInUser) {
             setUser(foundUser);
-            console.log(foundUser);
         }
     }, []);
 

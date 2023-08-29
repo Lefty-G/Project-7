@@ -17,7 +17,6 @@ function Home() {
     useEffect(() => {
         if (loggedInUser) {
             setUser(foundUser);
-            console.log(foundUser);
         }
     }, []);
 
