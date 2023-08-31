@@ -12,7 +12,7 @@ exports.createPost = (req, res, next) => {
       parsedPost = req.body;
     };
     const post = new Post({
-      email: parsedPost.email,
+      userId: parsedPost.id,
       post: parsedPost.post,
       imageUrl,
       usersRead: []

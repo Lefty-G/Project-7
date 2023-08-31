@@ -13,7 +13,6 @@ function Profile() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState();
-    const id = userDetails.userId
 
     const handleDelete = () => {
         axios.delete(`http://localhost:3000/api/auth/${userDetails.userId}`)
@@ -23,8 +22,7 @@ function Profile() {
             .catch(err => {
                 console.log(err);
             });
-        // const user = this.state.user.filter(userDetails => userDetails.userId !== id);
-        // this.setState({ user });
+
         
         setUser({});
         setEmail("");

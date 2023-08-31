@@ -12,7 +12,7 @@ import axios from 'axios'
 function CreatePost() {
 
     const userDetails = useContext(store).state.userDetails;
-    const [post, setPost] = useState('');
+    const [post, setPost] = useState([]);
     const [media, setMedia] = useState(null);
     const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ function CreatePost() {
         e.preventDefault()
         console.log(post)
 
-        const postDetails = { email:'', post, id: userDetails.userId }
+        const postDetails = { post, id: userDetails.userId }
         let headers 
         console.log(media)
 
@@ -41,8 +41,6 @@ function CreatePost() {
                 'Content-Type': 'application/json'
             }
             axios.post('http://localhost:3000/api/posts', postDetails, { headers })
-            
-
         }
 
         navigate("/home");

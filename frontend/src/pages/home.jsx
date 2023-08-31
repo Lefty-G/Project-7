@@ -10,10 +10,32 @@ import Post from '../components/post'
 
 function Home() {
     const [user, setUser] = useState();
-    const { state } = useContext(store);
     const loggedInUser = localStorage.getItem("userDetails");
     const foundUser = JSON.parse(loggedInUser);
+    const [posts, setPosts] = useState([]);
+    const userDetails = useContext(store).state.userDetails;
+    let headers
+    // const postDetails = { post, id : userDetails.userId }
+    // const [post, setPost] = useState([]);
 
+    const getAllPosts = () => {
+        
+        headers = {
+            'Authorization': `Bearer ${userDetails.token}`,
+        }
+        axios.get(`http://localhost:3000/api/posts`, { headers })
+            .then(res => {
+                setPosts(res.data)
+                console.log(posts)
+            })
+            .catch(error => { console.log(error) })
+    }
+
+    useEffect(() => {
+        getAllPosts()
+        console.log(posts)
+    }, []);
+    
     useEffect(() => {
         if (loggedInUser) {
             setUser(foundUser);
@@ -44,7 +66,9 @@ function Home() {
                 </Link>
             </div>
             <div className="post-area">
-                <Post />
+            {posts.map ((post)=>{
+                <Post key={post.id} post={post.post} />
+            })}
             </div>
             </div>
         </>
