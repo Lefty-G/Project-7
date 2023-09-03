@@ -7,8 +7,6 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
 
-// change email to userId
-
     Post.init(
         {
             userId: {

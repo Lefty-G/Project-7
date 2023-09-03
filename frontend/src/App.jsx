@@ -26,7 +26,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
-              {/* <Route path="/home" element={state.userDetails ? <Home /> : <Navigate to="/" />} /> */}
+              {/* <Route path="/home" element={localStorage.getItem("userDetails") ? <Home /> : <Navigate to="/" />} /> */}
               <Route path ='/home' element={<Home />} />
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/menu" element={<Menu />} />

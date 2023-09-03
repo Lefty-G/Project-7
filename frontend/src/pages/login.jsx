@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { store } from '../store.js';
 import Header from '../components/header'
 
@@ -22,12 +22,12 @@ function Login() {
             )
             setUser(res.data)
             dispatch({ type: "CHANGE_USER", payload: res.data });
-            navigate("/home");
+            navigate("/home")
         } catch (err) {
             console.log(err)
         }
     };
-    
+
 
     return (
         <>

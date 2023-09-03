@@ -8,39 +8,24 @@ import { faHouse, faUserGroup, faMessage, faBell } from '@fortawesome/free-solid
 import Post from '../components/post'
 
 
-function Home() {
-    const [user, setUser] = useState();
-    const loggedInUser = localStorage.getItem("userDetails");
-    const foundUser = JSON.parse(loggedInUser);
+export default function Home() {
     const [posts, setPosts] = useState([]);
-    const userDetails = useContext(store).state.userDetails;
-    let headers
-    // const postDetails = { post, id : userDetails.userId }
-    // const [post, setPost] = useState([]);
-
-    const getAllPosts = () => {
-        
-        headers = {
-            'Authorization': `Bearer ${userDetails.token}`,
-        }
-        axios.get(`http://localhost:3000/api/posts`, { headers })
-            .then(res => {
-                setPosts(res.data)
-                console.log(posts)
-            })
-            .catch(error => { console.log(error) })
-    }
-
-    useEffect(() => {
-        getAllPosts()
-        console.log(posts)
-    }, []);
+    const token = useContext(store).state.userDetails.token
     
     useEffect(() => {
-        if (loggedInUser) {
-            setUser(foundUser);
-        }
-    }, []);
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    };
+    axios
+    .get(`http://localhost:3000/api/posts`, { headers})
+    .then(res => {
+        console.log(res.data)
+        setPosts(res.data);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}, [token]);
 
     return (
         <>
@@ -66,16 +51,11 @@ function Home() {
                 </Link>
             </div>
             <div className="post-area">
-            {posts.map ((post)=>{
-                <Post key={post.id} post={post.post} />
-            })}
+            {posts.map ((post)=>(
+                <Post key={post.id} post={post} />
+            ))}
             </div>
             </div>
         </>
     )
 }
-
-
-
-
-export default Home

@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faImage, faVideo, faMicrophone, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Link } from 'react-router-dom';
 import profilePicture from "../resources/grey-profile-picture.png";
-import Post from '../components/post';
 import { useState, useContext } from 'react';
 import { store } from '../store.js';
 import axios from 'axios'

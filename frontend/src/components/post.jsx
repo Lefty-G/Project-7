@@ -1,23 +1,27 @@
-import { useState, useContext, useEffect } from 'react';
+import { useContext} from 'react';
 import { store } from '../store.js';
 import profilePicture from "../resources/grey-profile-picture.png";
-import axios from 'axios';
+// const postBody = useContext(store).state.posts.post
 
 
-export default function Post({body = "Post", images = "image"}) {
+export default function Post({post}) {
     const userDetails = useContext(store).state.userDetails;
-    const [posts, setPosts] = useState('');
+    console.log(post)
+
+    //TODO create a func that gets extension post.imageUrl, if returns emtpy return null.
+
 
 
     return (
         <div className="home-post-container">
             <div className="user-info">
-                <img src={profilePicture} alt="profile-picture" className="profile-picture"></img>
+                <img src={profilePicture} alt="profile-picture" className="profile-picture"/>
                 <div className="profile-name">{userDetails.email}</div>
             </div>
             <div className="post-display">
-                <p>{body}</p>
-                <img>{images}</img>
+                <p>{post.post}</p>
+                //TODO conditonal render post.imageUrl based on its extension/if it exists
+                <img src={post.imageUrl} />
             </div>
         </div>
     )

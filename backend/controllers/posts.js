@@ -32,9 +32,10 @@ exports.createPost = (req, res, next) => {
     );
   };
 
+  
 
   exports.findAll = (req, res, next) => {
-    Post.findAll().then(
+    Post.findAll({ order: [["createdAt", "DESC"]] }).then(
       (posts) => {
         res.status(200).json(posts);
       }
@@ -66,18 +67,20 @@ exports.createPost = (req, res, next) => {
   exports.usersRead = (req, res, next) => {
     const userId = req.body.userId;
     const postId = req.params.id;
-    const read = req.body.read;
+    console.log(postId)
+
     Post.findOne({
-      _id: postId
+      where: {id: postId}
     }).then(
       (post) => {
             console.log('Post read');
-            post.usersRead.push(userId);
-            post.read++;
+      //TODO create if statement to check whether userId is in array, before adding it
+      //TODO save to userRead
+      res.status(200).json({message: "success"})
       }
     ).catch(
       (error) => {
-        res.status(404).json({
+        res.status(500).json({
           error: error.message || error
         });
       }
