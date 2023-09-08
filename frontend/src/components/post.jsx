@@ -1,31 +1,42 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { store } from '../store.js';
 import profilePicture from "../resources/grey-profile-picture.png";
-
+import { Link } from 'react-router-dom';
 
 export default function Post({ post }) {
     const userDetails = useContext(store).state.userDetails;
-    console.log(post)
 
-    //TODO create a func that gets extension post.imageUrl, if returns emtpy return null.
+    function getExtension(imageUrl) {
+        let result = null;
+        if (imageUrl) {
+            result = imageUrl.split('.').pop();
+        }
+        return result
+    }
 
-    //TODO conditonal render post.imageUrl based on its extension/if it exists
 
     return (
         <div className="home-post-container">
             <div className="user-info">
-                <img src={profilePicture} alt="profile-picture" className="profile-picture" />
-                <div className="profile-name">{userDetails.email}</div>
+                <img src={profilePicture} alt="profile-picture" className="user-info--profile-picture" />
+                <div className="user-info--profile-name">{userDetails.email}</div>
             </div>
             <div className="post-display">
-                <p className="post-body">{post.post}</p>
-                <div className="media-display">
-                    {<img src={post.imageUrl} />}
-                    {<video>
-                        <source src="movie.mp4" type="video/mp4" />
-                        <source src="movie.ogg" type="video/ogg" />
-                    </video>}
-                </div>
+                <p className="post-display--body">{post.post}</p>
+                {post.imageUrl &&
+                    <div className="media-display">
+                        {["png", "jpg"].includes(getExtension(post.imageUrl)) &&
+                            <img src={post.imageUrl} className="media-display--media"/>
+                        }
+                        {["mp4"].includes(getExtension(post.imageUrl)) &&
+                            <video src={post.imageUrl} className="media-display--media"/>
+                        }
+                        {["mp3"].includes(getExtension(post.imageUrl)) &&
+                            <audio src={post.imageUrl} className="media-display--media"/>
+                        }
+                    </div>
+                }
+            <Link to={`/get-post/${post.id}`} className="view-post">...view post</Link>
             </div>
         </div>
     )

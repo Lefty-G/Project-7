@@ -69,7 +69,7 @@ function CreatePost() {
                 <form onSubmit={handleInput}>
                     <textarea placeholder="Got something to say?" className="post-input" name="post" onChange={handleCommentChange} value={post}></textarea>
                     <div className="post-input-upload">
-                        <input
+                        <input id="chooseFile"
                             aria-label="create post media input selector"
                             className="create-post__upload"
                             type="file"

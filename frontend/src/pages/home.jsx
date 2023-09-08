@@ -12,6 +12,8 @@ export default function Home() {
     const [posts, setPosts] = useState([]);
     const token = useContext(store).state.userDetails.token
     
+
+
     useEffect(() => {
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -27,6 +29,9 @@ export default function Home() {
     });
 }, [token]);
 
+
+
+console.log(posts)
     return (
         <>
             <Header />
