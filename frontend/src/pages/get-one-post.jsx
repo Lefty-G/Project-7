@@ -11,19 +11,29 @@ export default function GetOnePost({ post }) {
     const userDetails = useContext(store).state.userDetails;
     const [onePost, setOnePost] = useState([]);
     const token = useContext(store).state.userDetails.token;
+
     const { id } = useParams();
 
     useEffect(() => {
         const headers = {
             Authorization: `Bearer ${token}`,
         };
-        axios.get(`http://localhost:3000/api/posts/${id}`, { headers })
-            .then(res => {
-                setOnePost(res.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        const getPost = async () => {
+            let res = await axios.get(`http://localhost:3000/api/posts/${id}`, { headers })
+            setOnePost(res.data);
+        }
+        const markPostRead = async () => {
+            const body = { userId: userDetails.userId }
+            console.log(body)
+            await axios.post(`http://localhost:3000/api/posts/${id}/read`, body, { headers })
+        }
+        try {
+            getPost()
+            markPostRead()
+        } catch (error) {
+            
+            console.log(error);
+        };
     }, [token]);
 
 
@@ -34,6 +44,7 @@ export default function GetOnePost({ post }) {
         }
         return result
     }
+
 
 
     return (
@@ -70,10 +81,10 @@ export default function GetOnePost({ post }) {
                                 <img src={onePost.imageUrl} className="one-media-display--media" />
                             }
                             {["mp4"].includes(getExtension(onePost.imageUrl)) &&
-                                <video src={onePost.imageUrl} className="one-media-display--media" />
+                                <video src={onePost.imageUrl} controls className="one-media-display--media" />
                             }
                             {["mp3"].includes(getExtension(onePost.imageUrl)) &&
-                                <audio src={onePost.imageUrl} className="one-media-display--media" />
+                                <audio src={onePost.imageUrl} controls className="one-media-display--media" />
                             }
                         </div>
                     }

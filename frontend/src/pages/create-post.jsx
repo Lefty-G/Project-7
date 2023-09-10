@@ -21,7 +21,7 @@ function CreatePost() {
 
         const postDetails = { post, id: userDetails.userId }
         let headers 
-        console.log(media)
+       
 
         if (media) {
             const formData = new FormData();

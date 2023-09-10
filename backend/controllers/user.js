@@ -88,4 +88,3 @@ exports.deleteUser = (req, res, next) => {
   );
 };
 
-//Use different API method for sequelize

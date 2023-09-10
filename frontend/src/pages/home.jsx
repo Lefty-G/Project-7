@@ -21,7 +21,6 @@ export default function Home() {
     axios
     .get(`http://localhost:3000/api/posts`, { headers})
     .then(res => {
-        console.log(res.data)
         setPosts(res.data);
     })
     .catch(error => {
@@ -31,7 +30,6 @@ export default function Home() {
 
 
 
-console.log(posts)
     return (
         <>
             <Header />
