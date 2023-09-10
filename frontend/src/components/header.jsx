@@ -20,7 +20,6 @@ function Header() {
 
     return (
         <header className="header">
-
             <div className="header--logo">
                 <img src={logo} className="header--black-logo" alt="header-logo"></img>
                 <div className="header--title">Groupomania</div>
