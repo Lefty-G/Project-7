@@ -20,8 +20,8 @@ function CreatePost() {
         console.log(post)
 
         const postDetails = { post, id: userDetails.userId }
-        let headers 
-       
+        let headers
+
 
         if (media) {
             const formData = new FormData();
@@ -61,26 +61,28 @@ function CreatePost() {
                 </Link>
                 <h1 className="misc-nav--title">Create a post</h1>
             </nav>
-            <div className="post-container">
-                <div className="user-card">
-                    <img src={profilePicture} alt="profile-picture" className="user-card--picture" />
-                    <div id="username" className="user-card--username">{userDetails.email}</div>
-                </div>
-                <form onSubmit={handleInput}>
-                    <textarea placeholder="Got something to say?" className="post-input" name="post" onChange={handleCommentChange} value={post}></textarea>
-                    <div className="post-input-upload">
-                        <input id="chooseFile"
-                            aria-label="create post media input selector"
-                            className="create-post__upload"
-                            type="file"
-                            accept="image/*,video/*,audio/*"
-                            onChange={handleMediaChange}
-                        />
+            <div className="post-container-body">
+                <div className="post-container">
+                    <div className="user-card">
+                        <img src={profilePicture} alt="profile-picture" className="user-card--picture" />
+                        <div id="username" className="user-card--username">{userDetails.email}</div>
                     </div>
-                    <button type='submit' className="create-post--button">
-                        Create post
-                    </button>
-                </form>
+                    <form onSubmit={handleInput}>
+                        <textarea placeholder="Got something to say?" className="post-input" name="post" onChange={handleCommentChange} value={post}></textarea>
+                        <div className="post-input-upload">
+                            <input id="chooseFile"
+                                aria-label="create post media input selector"
+                                className="create-post__upload"
+                                type="file"
+                                accept="image/*,video/*,audio/*"
+                                onChange={handleMediaChange}
+                            />
+                        </div>
+                        <button type='submit' className="create-post--button">
+                            Create post
+                        </button>
+                    </form>
+                </div>
             </div>
         </>
     )

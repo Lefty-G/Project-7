@@ -20,10 +20,12 @@ export default function Post({ post }) {
     return (
         <div className="home-post-container">
             <div className="user-info">
-                <img src={profilePicture} alt="profile-picture" className="user-info--profile-picture" />
-                <div className="user-info--profile-name">{userDetails.email}</div>
+                <div className="user-info--details">
+                    <img src={profilePicture} alt="profile-picture" className="user-info--profile-picture" />
+                    <div className="user-info--profile-name">{userDetails.email}</div>
+                </div>
                 {post.usersRead.includes(userDetails.userId) &&
-                     <FontAwesomeIcon className="read-eye" title="Post read" icon={faEye} />}
+                    <FontAwesomeIcon className="read-eye" title="Post read" icon={faEye} />}
             </div>
             <div className="post-display">
                 <p className="post-display--body">{post.post}</p>

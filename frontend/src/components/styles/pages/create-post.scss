@@ -72,5 +72,73 @@
 }
 
 @media only screen and (min-width: 998px) {
+    .post-container-body{
+        height: 770px;
+        max-width: 1440px;
+        margin: 0px 120px;
+        border-left: 4px solid rgb(245, 247, 247);
+        border-right: 4px solid rgb(245, 247, 247);
+    }
+
+    .post-container{
+        width: 900px;
+        height: 600px;
+        margin: 0px 100px 15px 250px;
+    }
     
+    
+    .user-card{
+        display: flex;
+        height: 80px;
+        width: 350px;
+    
+        &--picture{
+            width: 80px;
+            height: 80px;
+        }
+    
+        &--username{
+            position: relative;
+            top: 12px;
+            left: 17px;
+            font-size: 40px;
+        }
+    
+    }
+    
+    .post-input{
+        width: 870px;
+        height: 350px;
+        font-size: 20px;
+    }
+    
+    .post-input-upload{
+        margin-top: 20px;
+        margin-left: 12px;
+    }
+    
+    .create-post{
+        height: 70px;
+        text-align: center;
+        text-decoration: none;
+        
+    
+        &--button{
+            top: 50px;
+            left: 575px;
+            width: 300px;
+            border-radius: 40px;
+            position: relative;
+            font-size: 1.2rem;
+            padding: 10px 0px;
+            background-color: $primary-color;
+            color: white;
+            text-decoration: none;
+        }
+    
+        &--button:hover{
+            cursor: pointer;
+        }
+    
+    }
 }

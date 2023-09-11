@@ -38,6 +38,7 @@ function Profile() {
                 </Link>
                 <h1 className="misc-nav--title__menu">Profile</h1>
             </nav>
+            <div className="profile-body">
             <div className="profile-card">
                 <img src={profilePicture} alt="profile-picture" className="profile-card--picture" />
                 <div id="username" className="profile-card--username">{userDetails.email}</div>
@@ -45,6 +46,7 @@ function Profile() {
                 <Link to="/" onClick={handleDelete} className='delete'>
                     <div className='delete--button'>Delete</div>
                 </Link>
+            </div>
             </div>
         </>
     )

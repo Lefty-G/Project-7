@@ -29,3 +29,24 @@
         }
     }
 }
+
+@media only screen and (min-width: 998px) {
+    .misc-nav {
+
+    
+        &--title {
+            position: relative;
+            top: -4px;
+            left: 750px;
+            color: white;
+    
+            &__menu {
+                position: relative;
+                top: -4px;
+                left: 750px;
+                color: white;
+            }
+        }
+    }
+
+}
