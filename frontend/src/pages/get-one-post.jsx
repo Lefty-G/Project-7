@@ -31,7 +31,7 @@ export default function GetOnePost({ post }) {
             getPost()
             markPostRead()
         } catch (error) {
-            
+
             console.log(error);
         };
     }, [token]);
@@ -55,51 +55,55 @@ export default function GetOnePost({ post }) {
                 </Link>
                 <h1 className="misc-nav--title__menu">Post</h1>
             </nav>
-            <div className="home-logos">
-                <div className="home-logos--home">
-                    <FontAwesomeIcon icon={faHouse} />
-                </div>
-                <div className="home-logos--friends">
-                    <FontAwesomeIcon icon={faUserGroup} />
-                </div>
-                <div className="home-logos--messages">
-                    <FontAwesomeIcon icon={faMessage} />
-                </div>
-                <div className="home-logos--notifications">
-                    <FontAwesomeIcon icon={faBell} />
+            <div className="home-page-container">
+                <div className="home-logos">
+                    <div className="home-logos--home">
+                        <FontAwesomeIcon icon={faHouse} />
+                    </div>
+                    <div className="home-logos--friends">
+                        <FontAwesomeIcon icon={faUserGroup} />
+                    </div>
+                    <div className="home-logos--messages">
+                        <FontAwesomeIcon icon={faMessage} />
+                    </div>
+                    <div className="home-logos--notifications">
+                        <FontAwesomeIcon icon={faBell} />
+                    </div>
                 </div>
             </div>
-            <div className="one-post-container">
-                <div className="user-info">
-                    <img src={profilePicture} alt="profile-picture" className="user-info--profile-picture" />
-                    <div className="user-info--profile-name">{userDetails.email}</div>
-                </div>
-                <div className="one-post-display">
-                    {onePost.imageUrl &&
-                        <div className="one-media-display">
-                            {["png", "jpg"].includes(getExtension(onePost.imageUrl)) &&
-                                <img src={onePost.imageUrl} className="one-media-display--media" />
-                            }
-                            {["mp4"].includes(getExtension(onePost.imageUrl)) &&
-                                <video src={onePost.imageUrl} controls className="one-media-display--media" />
-                            }
-                            {["mp3"].includes(getExtension(onePost.imageUrl)) &&
-                                <audio src={onePost.imageUrl} controls className="one-media-display--media" />
-                            }
+            <div className='post-area'>
+                <div className="one-post-container">
+                    <div className="one-post-user-info">
+                        <img src={profilePicture} alt="profile-picture" className="one-post-user-info--profile-picture" />
+                        <div className="one-post-user-info--profile-name">{userDetails.email}</div>
+                    </div>
+                    <div className="one-post-display">
+                        {onePost.imageUrl &&
+                            <div className="one-media-display">
+                                {["png", "jpg"].includes(getExtension(onePost.imageUrl)) &&
+                                    <img src={onePost.imageUrl} className="one-media-display--media" />
+                                }
+                                {["mp4"].includes(getExtension(onePost.imageUrl)) &&
+                                    <video src={onePost.imageUrl} controls className="one-media-display--media" />
+                                }
+                                {["mp3"].includes(getExtension(onePost.imageUrl)) &&
+                                    <audio src={onePost.imageUrl} controls className="one-media-display--media" />
+                                }
+                            </div>
+                        }
+                        <p className="one-post-display--body">{onePost.post}</p>
+                    </div>
+                    <div className="post-feedback">
+                        <div className="post-feedback--likes-area">
+                            <FontAwesomeIcon className="post-feedback--icon-like" icon={faThumbsUp} />
+                            <div className="post-feedback--total-likes">0</div>
                         </div>
-                    }
-                    <p className="one-post-display--body">{onePost.post}</p>
-                </div>
-                <div className="post-feedback">
-                    <div className="post-feedback--likes-area">
-                        <FontAwesomeIcon className="post-feedback--icon-like" icon={faThumbsUp} />
-                        <div className="post-feedback--total-likes">0</div>
+                        <div className="post-feedback--likes-area">
+                            <FontAwesomeIcon className="post-feedback--icon-dislike" icon={faThumbsDown} />
+                            <div className="post-feedback--total-likes">0</div>
+                        </div>
+                        <div className="post-feedback--add-comment">Add comment</div>
                     </div>
-                    <div className="post-feedback--likes-area">
-                        <FontAwesomeIcon className="post-feedback--icon-dislike" icon={faThumbsDown} />
-                        <div className="post-feedback--total-likes">0</div>
-                    </div>
-                    <div className="post-feedback--add-comment">Add comment</div>
                 </div>
             </div>
         </>

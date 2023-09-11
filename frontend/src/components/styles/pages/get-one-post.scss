@@ -3,6 +3,30 @@
     height: 600px;
     width: 360px;
     margin-left: 7px;
+    margin-top: 20px;
+}
+
+.one-post-user-info{
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, .2);
+
+    &--details{
+        display: flex;
+    }
+
+    &--profile-picture {
+        height: 50px;
+        margin-left: 10px;
+    }
+
+    &--profile-name {
+        font-size: 25px;
+        position: relative;
+        top: 7px;
+        left: 5px;
+    }
 }
 
 .one-post-display {
@@ -86,5 +110,54 @@
 }
 
 @media only screen and (min-width: 998px) {
+    .one-post-container {
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, .2);
+        height: 650px;
+        width: 1000px;
+        margin-left: 7px;
+        
+    }
     
+    .one-post-user-info{
+        height: 80px;
+
+        &--profile-picture {
+            height: 70px;
+            margin-left: 10px;
+        }
+    
+        &--profile-name {
+            font-size: 40px;
+            height: 80px;
+        }
+    }
+    
+    .one-post-display {
+        height: 80px;
+    
+        &--body {
+            padding-bottom: 20px;
+            width: 965px;
+            height: 100px;
+            margin: 10px 0px 10px 15px;
+            background-color: rgb(240, 240, 240);
+            padding-left: 5px;
+        }
+    }
+    
+    .one-media-display {
+        width: 1000px;
+    
+        &--media {
+            width: 600px;
+            height: 350px;
+        }
+    }
+    
+    .post-feedback{
+
+        &--add-comment{
+            left: 660px;
+        }
+    }
 }

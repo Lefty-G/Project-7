@@ -11,22 +11,22 @@ import Post from '../components/post'
 export default function Home() {
     const [posts, setPosts] = useState([]);
     const token = useContext(store).state.userDetails.token
-    
+
 
 
     useEffect(() => {
-    const headers = {
-        Authorization: `Bearer ${token}`,
-    };
-    axios
-    .get(`http://localhost:3000/api/posts`, { headers})
-    .then(res => {
-        setPosts(res.data);
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}, [token]);
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .get(`http://localhost:3000/api/posts`, { headers })
+            .then(res => {
+                setPosts(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, [token]);
 
 
 
@@ -34,30 +34,30 @@ export default function Home() {
         <>
             <Header />
             <div className="home-page-container">
-            <div className="home-logos">
-                <div className="home-logos--home">
-                    <FontAwesomeIcon icon={faHouse} />
+                <div className="home-logos">
+                    <div className="home-logos--home">
+                        <FontAwesomeIcon icon={faHouse} />
+                    </div>
+                    <div className="home-logos--friends">
+                        <FontAwesomeIcon icon={faUserGroup} />
+                    </div>
+                    <div className="home-logos--messages">
+                        <FontAwesomeIcon icon={faMessage} />
+                    </div>
+                    <div className="home-logos--notifications">
+                        <FontAwesomeIcon icon={faBell} />
+                    </div>
                 </div>
-                <div className="home-logos--friends">
-                <FontAwesomeIcon icon={faUserGroup} />
+                <div className="create-a-post">
+                    <Link to="/create-post" className="create-a-post--button">
+                        Create a post
+                    </Link>
                 </div>
-                <div className="home-logos--messages">
-                <FontAwesomeIcon icon={faMessage} />
+                <div className="post-area">
+                    {posts.map((post) => (
+                        <Post key={post.id} post={post} />
+                    ))}
                 </div>
-                <div className="home-logos--notifications">
-                <FontAwesomeIcon icon={faBell} />
-                </div>
-            </div>
-            <div className="create-a-post">
-               <Link to="/create-post" className="create-a-post--button">
-                    Create a post 
-                </Link>
-            </div>
-            <div className="post-area">
-            {posts.map ((post)=>(
-                <Post key={post.id} post={post} />
-            ))}
-            </div>
             </div>
         </>
     )
