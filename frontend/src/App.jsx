@@ -15,19 +15,17 @@ import { useContext } from 'react';
 
 function App() {
   const { state } = useContext(store);
-  // const userDetails = useContext(store).state.userDetails
+
 
 
   return (
     <div className="App">
 
-      {/* <React.StrictMode> */}
         <StateProvider>
           <BrowserRouter>           
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
-              {/* <Route path="/home" element={state.userDetails ? <Home /> : <Navigate to="/" />} /> */}
               <Route path ='/home' element={<Home />} />
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/menu" element={<Menu />} />
@@ -36,7 +34,6 @@ function App() {
             </Routes>
           </BrowserRouter>
         </StateProvider>
-      {/* </React.StrictMode> */}
 
 
     </div>
@@ -45,6 +42,3 @@ function App() {
 
 export default App;
 
-
-// Guard 
-{/* <Route path="/home" element={state.userDetails ? <Home /> : <Navigate to="/" />} /> */}
